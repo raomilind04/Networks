@@ -1,0 +1,13 @@
+Script started on 2024-01-31 21:18:44+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="143" LINES="40"]
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment1[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment1[00m$ gcc -o exe 2020A3PS1765G_assignment1.c
+[?2004l[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment1[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment1[00m$ ./exe
+[?2004lParent/pid:366112 created
+Child/pid:366113 created (parent process pid:366112)
+GrandChild/pid:366114 created (parent process pid:366113)
+Child/pid:366113 says GrandChild/pid:366114 has exited
+Parent/pid:366112 says Child/pid:366113 has exited
+Parent/pid:366112 is exiting
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment1[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment1[00m$ exit
+[?2004lexit
+
+Script done on 2024-01-31 21:18:58+05:30 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,20 @@
+Script started on 2024-02-01 14:07:29+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="143" LINES="40"]
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment2[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment2[00m$ gcc -o exe 2020A3PS1765G_assignment2.c
+[?2004l[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment2[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment2[00m$ ./exe
+[?2004lParent/pid:368684 created
+Integer input for parent: 10
+Child/pid:368685 created (parent process pid:368684)
+[Child/368685] Parent sent: 10
+Integer input for child: 20
+GrandChild/pid:368686 created (parent process pid:368685)
+[GrandChild/368686] Child sent: 30
+Integer input for GrandChild: 30
+[Child/368685] GrandChild sent: 60
+[Parent/368684] Child sent: 60
+[GrandChild/368686] Exiting 
+[Child/368685] Exiting
+[Parent/368684] Exiting
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment2[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment2[00m$ exot[K[Kit
+[?2004lexit
+
+Script done on 2024-02-01 14:08:28+05:30 [COMMAND_EXIT_CODE="0"]
