@@ -33,4 +33,6 @@ func handleConnections(conn net.Conn) {
         return 
     }
     fmt.Printf("[Read %d bytes] %s", bytesRead, buffer)
+
+    defer conn.Close()
 }
