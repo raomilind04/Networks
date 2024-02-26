@@ -17,5 +17,9 @@ func main() {
         fmt.Println(err)
         return 
     }
-    conn.Close()
+    for {
+        buffer := make([]byte, 1024)
+        _, err = conn.Read(buffer)
+        fmt.Printf("From sever %s", buffer)
+    }
 }
