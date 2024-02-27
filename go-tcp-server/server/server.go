@@ -21,15 +21,12 @@ func main() {
             return
         }
         connections = append(connections, conn)
-
-        fmt.Println(len(connections))
-
-        go handleConnections(conn, connections)
+        go handleConnections(conn, &connections)
     }
 
 }
 
-func handleConnections(conn net.Conn, connections []net.Conn) {
+func handleConnections(conn net.Conn, connections *[]net.Conn) {
     buffer := make([]byte, 1024)
     for {
         bytesRead, err := conn.Read(buffer)
@@ -42,8 +39,8 @@ func handleConnections(conn net.Conn, connections []net.Conn) {
     }
 }
 
-func handleUpdates(senderConn net.Conn, msg []byte, connections []net.Conn) {
-    for _, conn := range connections {
+func handleUpdates(senderConn net.Conn, msg []byte, connections *[]net.Conn) {
+    for _, conn := range *connections {
         if senderConn == conn {
             continue
         }
