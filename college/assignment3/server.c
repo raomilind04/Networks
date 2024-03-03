@@ -11,7 +11,6 @@ void handleClient(int client_FD, struct sockaddr_in client);
 int getUserInput(); 
 
 int main(int argc, char *argv[]) {
-
     // Get ip and port from user defined options
     int opt;
     char* input_ip= NULL; 
@@ -91,20 +90,18 @@ struct sockaddr_in* createTCPServerAddress(char* input_ip, int port) {
 }
 
 void handleClient(int client_FD, struct sockaddr_in client) {
-    char buffer[1024]; 
-    ssize_t client_msg_size = recv(client_FD, buffer, sizeof(buffer), 0);
+    int client_msg; 
+    ssize_t client_msg_size = recv(client_FD, &client_msg, sizeof(client_msg), 0);
 
     if (client_msg_size > 0) {
         // Receive client_msg
-        buffer[client_msg_size] = '\0'; 
-        int client_msg = atoi(buffer);
         printf("Number from client is %d\n", client_msg);
         
         // Get user input at server end
-        int server_msg = getUserInput();
-        sprintf(buffer, "%d", server_msg + client_msg); 
+        int server_msg = getUserInput() + client_msg; 
+
         // Send sum of server_msg and client_msg back
-        send(client_FD, buffer, strlen(buffer), 0); 
+        send(client_FD, &server_msg, sizeof(server_msg), 0); 
     } else if (client_msg_size == 0) {
        printf("client_msg_size was 0\n");  
     }
