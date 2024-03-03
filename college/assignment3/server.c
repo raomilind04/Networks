@@ -76,6 +76,9 @@ int main(int argc, char *argv[]) {
         handleClient(client_FD, client_addr); 
     }
 
+    // shutdown the server
+    shutdown(server_FD, SHUT_RDWR);
+    
     return 0; 
 }
 

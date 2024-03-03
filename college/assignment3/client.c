@@ -5,12 +5,12 @@
 
 int main(int argc, char *argv[]) {
     int opt;
-    char* serverAddress = NULL; 
+    char* server_addr = NULL; 
     int port = -1; 
     while((opt = getopt(argc, argv, "s:p:")) != -1) {
         switch(opt) {
             case 'i':
-                serverAddress = optarg;
+                server_addr = optarg;
                 break; 
             case 'p':
                 port = strtol(optarg, NULL, 10);
@@ -25,12 +25,12 @@ int main(int argc, char *argv[]) {
         }
 
     }
-    if (serverAddress == NULL || port == -1) {
+    if (server_addr== NULL || port == -1) {
         perror("Missing args"); 
         exit(1); 
     }
 
-    printf("Address: %s\n", serverAddress); 
+    printf("Address: %s\n", server_addr); 
     printf("Port: %d\n", port); 
 
     return 0; 
