@@ -21,11 +21,7 @@ int main(int argc, char *argv[]) {
                 input_ip = optarg;
                 break; 
             case 'p':
-                port = strtol(optarg, NULL, 10);
-                if (port <= 0 || port > 65535) {
-                    perror("Invalid port number"); 
-                    exit(1);
-                }
+                port = atoi(optarg); 
                 break; 
             default:
                 perror("Invalid args");
@@ -37,9 +33,10 @@ int main(int argc, char *argv[]) {
         perror("Missing args"); 
         exit(1); 
     }
-
-    printf("Address: %s\n", input_ip); 
-    printf("Port: %d\n", port); 
+    
+    printf("User Args -> \n"); 
+    printf("Server Address: %s\n", input_ip); 
+    printf("Server Port: %d\n", port); 
    
     //Create file descriptor and server adder struct
     int server_FD = socket(AF_INET, SOCK_STREAM, 0); 
