@@ -1,0 +1,20 @@
+Script started on 2024-02-24 12:13:59+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="143" LINES="40"]
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ gcc 0[K-o server server.c
+[?2004l[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ ./server -i 127.0.0.1 -p 808-[K0
+[?2004lUser Args -> 
+Server Address: 127.0.0.1
+Server Port: 8080
+[Binding Completed] ip: 127.0.0.1 | port: 8080
+[Listen] Listening...
+Number from client is 10
+Enter a number: 
+15
+Number from client is 2000
+Enter a number: 
+5000
+exit
+^C
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-24 12:16:37+05:30 [COMMAND_EXIT_CODE="130"]

@@ -1,0 +1,24 @@
+Script started on 2024-02-24 12:14:12+05:30 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="143" LINES="40"]
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ gcc -o client client.c
+[?2004l[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ ./client -s 127.0.0.1 -p 8080
+[?2004lUser Args -> 
+Server Address: 127.0.0.1
+Server Port: 8080
+Connected to the server (ip: 127.0.0.1, port: 8080)
+Client is using port: 40596
+Enter a number: 
+10
+Number from server is 25
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ ./client -s 127.0.0.1 -p 8080
+[?2004lUser Args -> 
+Server Address: 127.0.0.1
+Server Port: 8080
+Connected to the server (ip: 127.0.0.1, port: 8080)
+Client is using port: 35258
+Enter a number: 
+2000
+Number from server is 7000
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment3[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment3[00m$ ei[Kxit
+[?2004lexit
+
+Script done on 2024-02-24 12:15:47+05:30 [COMMAND_EXIT_CODE="0"]
