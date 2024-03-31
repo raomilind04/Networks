@@ -1,0 +1,21 @@
+Script started on 2024-03-27 19:11:07+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="143" LINES="40"]
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment4[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment4[00m$ gcc -o server server.c
+[?2004l[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment4[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment4[00m$ gcc -o client client.c
+[?2004l[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment4[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment4[00m$ ./server -i 127.0.0.1 -p 8080 -c 100
+[?2004lUser Args -> 
+Server Address: 127.0.0.1
+Server Port: 8080
+[Binding Completed] ip: 127.0.0.1 | port: 8080
+[Listen] Listening...
+New client connected from 127.0.0.1:37588
+1 clients are connected to the server
+New client connected from 127.0.0.1:35628
+2 clients are connected to the server
+Number from client (127.0.0.1:37588) is 100
+Number from client (127.0.0.1:35628) is 1000
+exit
+^C
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment4[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment4[00m$ exit
+[?2004lexit
+
+Script done on 2024-03-27 19:14:16+05:30 [COMMAND_EXIT_CODE="130"]
