@@ -111,7 +111,7 @@ void* handleClient(void* arg) {
     client_info_t* client_info = (client_info_t*)arg;
     int client_FD = client_info->client_FD;
     struct sockaddr_in client = client_info->client_addr;
-    free(client_info); // Free the client_info struct
+    free(client_info);
     
     char client_ip[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &(client.sin_addr), client_ip, INET_ADDRSTRLEN); 

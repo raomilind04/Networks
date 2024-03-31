@@ -1,0 +1,14 @@
+Script started on 2024-03-27 19:11:35+05:30 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="143" LINES="40"]
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment4[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment4[00m$ ./client -s 17[K27.0.0.1 -p 8080
+[?2004lUser Args -> 
+Server Address: 127.0.0.1
+Server Port: 8080
+Connected to the server (ip: 127.0.0.1, port: 8080)
+Client is using port: 35628
+Enter a number: 
+1000
+Number from server is 1100
+[?2004h]0;ubuntu@foo: /Users/milindrao/Documents/network-programming/college/assignment4[01;32mubuntu@foo[00m:[01;34m/Users/milindrao/Documents/network-programming/college/assignment4[00m$ exit
+[?2004lexit
+
+Script done on 2024-03-27 19:13:58+05:30 [COMMAND_EXIT_CODE="0"]
