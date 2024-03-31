@@ -15,13 +15,17 @@ int main(int argc, char *argv[]) {
     int opt;
     char* input_ip= NULL; 
     int port = -1; 
-    while((opt = getopt(argc, argv, "i:p:")) != -1) {
+    int server_constant; 
+    while((opt = getopt(argc, argv, "i:p:c:")) != -1) {
         switch(opt) {
             case 'i':
                 input_ip = optarg;
                 break; 
             case 'p':
                 port = atoi(optarg); 
+                break; 
+            case 'c':
+                server_constant = atoi(optarg); 
                 break; 
             default:
                 perror("Invalid args");
@@ -37,7 +41,8 @@ int main(int argc, char *argv[]) {
     printf("User Args -> \n"); 
     printf("Server Address: %s\n", input_ip); 
     printf("Server Port: %d\n", port); 
-   
+    printf("Server Constant: %d\n", server_constant);  
+
     //Create file descriptor and server adder struct
     int server_FD = socket(AF_INET, SOCK_STREAM, 0); 
     struct sockaddr_in* server_addr = createTCPServerAddress(input_ip, port);
@@ -95,7 +100,7 @@ void handleClient(int client_FD, struct sockaddr_in client) {
         printf("Number from client is %d\n", client_msg);
         
         // Get user input at server end
-        int server_msg = getUserInput() + client_msg; 
+        int server_msg = server_constant + client_msg; 
 
         // Send sum of server_msg and client_msg back
         send(client_FD, &server_msg, sizeof(server_msg), 0); 
@@ -107,9 +112,3 @@ void handleClient(int client_FD, struct sockaddr_in client) {
     close(client_FD); 
 }
 
-int getUserInput() {
-    printf("Enter a number: \n");
-    int server_msg; 
-    scanf("%d", &server_msg);
-    return server_msg; 
-}
