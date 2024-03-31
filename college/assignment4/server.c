@@ -16,7 +16,8 @@ typedef struct {
     struct sockaddr_in client_addr;
 } client_info_t;
 
-int server_constant; 
+int server_constant;
+int connected_clients_count = 0; 
 
 int main(int argc, char *argv[]) {
     // Get ip and port from user defined options
@@ -78,6 +79,12 @@ int main(int argc, char *argv[]) {
             perror("[Accept] Unable to accept client");
         }
 
+        char client_ip[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &(client_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
+        printf("New client connected from %s:%d\n", client_ip, ntohs(client_addr.sin_port));
+        connected_clients_count++; 
+        printf("%d clients are connected to the server\n", connected_clients_count);
+
         // Create a new thread to handle the client
         client_info_t* client_info = malloc(sizeof(client_info_t));
         client_info->client_FD = client_FD;
@@ -105,12 +112,15 @@ void* handleClient(void* arg) {
     int client_FD = client_info->client_FD;
     struct sockaddr_in client = client_info->client_addr;
     free(client_info); // Free the client_info struct
+    
+    char client_ip[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, &(client.sin_addr), client_ip, INET_ADDRSTRLEN); 
 
     int client_msg;
     ssize_t client_msg_size = recv(client_FD, &client_msg, sizeof(client_msg), 0);
     if (client_msg_size > 0) {
         // Receive client_msg
-        printf("Number from client is %d\n", client_msg);
+        printf("Number from client (%s:%d) is %d\n", client_ip, ntohs(client.sin_port), client_msg);
         // Get user input at server end
         int server_msg = server_constant + client_msg;
         // Send sum of server_msg and client_msg back
@@ -120,6 +130,7 @@ void* handleClient(void* arg) {
     }
 
     // Close the client FD
+    connected_clients_count--; 
     close(client_FD);
     pthread_exit(NULL);
 }
