@@ -54,22 +54,37 @@ int main(int argc, char *argv[]) {
 
     FILE *result_file = fopen("result.html", "wb"); 
     if (result_file == NULL) {
-        perror("[fopen] Failure"); 
-        exit(1); 
+        perror("[fopen] Failure");
     }
-
+    
     char buffer[BUFFER_SIZE]; 
+    char prev_buffer[BUFFER_SIZE * 2]; 
     int bytes_read; 
     char *header_end; 
     bool header_read = false; 
+    bool use_prev = false; 
     while ((bytes_read = recv(socket_fd, buffer, BUFFER_SIZE, 0)) > 0) {
         if (header_read) {
             fwrite(buffer, 1, bytes_read, result_file);
         } else {
-            header_end = strstr(buffer, "\r\n\r\n"); 
-            if (header_end != NULL) {
-                fwrite(header_end + 4, 1, bytes_read - (header_end - buffer), result_file); 
-                header_read = true; 
+            if (use_prev) {
+                char merged_buffer[3 * BUFFER_SIZE]; 
+                merged_buffer[0] = '\0'; 
+                strncat(merged_buffer, prev_buffer, BUFFER_SIZE - 1); 
+                strncat(merged_buffer, buffer, bytes_read); 
+                header_end = strstr(merged_buffer, "\r\n\r\n"); 
+                if (header_end != NULL) {
+                    fwrite(header_end + 4, 1, bytes_read - (header_end - merged_buffer), result_file); 
+                    header_read = true; 
+                }
+                strcpy(prev_buffer, buffer);
+            } else {
+                header_end = strstr(buffer, "\r\n\r\n"); 
+                if (header_end != NULL) {
+                    fwrite(header_end + 4, 1, bytes_read - (header_end - buffer), result_file); 
+                    header_read = true; 
+                }
+                use_prev = true; 
             }
         }
     }
