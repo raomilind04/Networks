@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <stdbool.h>
 
 #define HTTP_PORT 80
 #define BUFFER_SIZE 1024 
@@ -59,8 +60,18 @@ int main(int argc, char *argv[]) {
 
     char buffer[BUFFER_SIZE]; 
     int bytes_read; 
+    char *header_end; 
+    bool header_read = false; 
     while ((bytes_read = recv(socket_fd, buffer, BUFFER_SIZE, 0)) > 0) {
-        fwrite(buffer, 1, bytes_read, result_file); 
+        if (header_read) {
+            fwrite(buffer, 1, bytes_read, result_file);
+        } else {
+            header_end = strstr(buffer, "\r\n\r\n"); 
+            if (header_end != NULL) {
+                fwrite(header_end + 4, 1, bytes_read - (header_end - buffer), result_file); 
+                header_read = true; 
+            }
+        }
     }
 
     fclose(result_file); 
