@@ -79,13 +79,11 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    FILE *result_file = fopen("result.html", "wb");
+    FILE *result_file = fopen("index.html", "wb");
     if (result_file == NULL) {
         perror("[fopen] Failure");
         exit(1);
     }
-
-    FILE *header_file = fopen("header.html", "wb");
 
     char buffer[BUFFER_SIZE];
     int bytes_read;
@@ -101,7 +99,6 @@ int main(int argc, char *argv[]) {
         } else {
             fwrite(buffer, 1, bytes_read, result_file);
         }
-        fwrite(buffer, 1, bytes_read, header_file);
     }
 
     fclose(result_file);
@@ -112,6 +109,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    printf("Result saved in result.html file\n");
+    printf("Result saved in index.html file\n");
     exit(0);
 }
