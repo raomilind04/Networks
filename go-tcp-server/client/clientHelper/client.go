@@ -1,4 +1,4 @@
-package main
+package client
 
 import (
 	"bufio"
@@ -9,20 +9,20 @@ import (
 	"strings"
 )
 
-func main() {
-    conn, err := net.Dial("tcp", "localhost:8080")
-    if err != nil {
-        fmt.Println(err)
-        return 
-    }
-    defer conn.Close()
-
-    terminate := make(chan bool)
-
-    go handleServerEvents(conn, terminate)
-    handleUserMessages(conn, terminate)
-
-}
+// func main() {
+//     conn, err := net.Dial("tcp", "localhost:8080")
+//     if err != nil {
+//         fmt.Println(err)
+//         return 
+//     }
+//     defer conn.Close()
+//
+//     terminate := make(chan bool)
+//
+//     go handleServerEvents(conn, terminate)
+//     handleUserMessages(conn, terminate)
+//
+// }
 
 func handleServerEvents(conn net.Conn, terminate chan bool) {
     buffer := make([]byte, 1024)
