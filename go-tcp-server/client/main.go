@@ -34,7 +34,7 @@ func initModel() model {
     ta.Prompt = "┃ "
 
     ta.SetWidth(40)
-    ta.SetHeight(15)
+    ta.SetHeight(1)
 
     ta.FocusedStyle.CursorLine = lipgloss.NewStyle()
 
@@ -75,6 +75,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.viewport.SetContent(strings.Join(m.msgs, "\n"))
 			m.textarea.Reset()
 			m.viewport.GotoBottom()
+        case tea.KeyCtrlC:
+            fmt.Println(m.textarea.Value())
+            return m, tea.Quit
         }
     case error:
         m.err = msg
